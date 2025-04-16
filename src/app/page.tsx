@@ -12,7 +12,7 @@ const data: ApiResponse = {
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="flex flex-row w-full justify-center mt-10">
       <SelectedRowsProvider>
         <DevicesToAddTable data={data} />
       </SelectedRowsProvider>

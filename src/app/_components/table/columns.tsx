@@ -1,26 +1,29 @@
 "use client";
 import { MAX_SELECTION } from "@/configs/global";
-import { useSelectedRows } from "@/provides/selected-devices-row";
+// import { useSelectedRows } from "@/provides/selected-devices-row";
 import { User } from "@/types/user.types";
 import showToast from "@/utils/show-toast";
-import { ColumnDef, Row } from "@tanstack/react-table";
+import { ColumnDef } from "@tanstack/react-table";
 import { useEffect, useRef } from "react";
 
-export const createClm = (): ColumnDef<User>[] => {
-  const { selectedRowIds, setSelectedRowIds } = useSelectedRows();
+export const createClm = (
+  selectedRowIds: string[],
+  setSelectedRowIds: (ids: string[]) => void
+): ColumnDef<User>[] => {
+  // const { selectedRowIds, setSelectedRowIds } = useSelectedRows();
 
   return [
     {
       id: "select",
       header: ({ table }) => {
-        useEffect(() => {
-          table.getRowModel().rows.forEach((row: Row<User>) => {
-            const isSelected = selectedRowIds.includes(row.original.id);
-            if (row.getIsSelected() !== isSelected) {
-              row.toggleSelected(isSelected);
-            }
-          });
-        }, [table.getRowModel().rows, selectedRowIds]);
+        // useEffect(() => {
+        //   table.getRowModel().rows.forEach((row: Row<User>) => {
+        //     const isSelected = selectedRowIds.includes(row.original.id);
+        //     if (row.getIsSelected() !== isSelected) {
+        //       row.toggleSelected(isSelected);
+        //     }
+        //   });
+        // }, [table.getRowModel().rows, selectedRowIds]);
 
         const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
           const isChecked = e.target.checked;

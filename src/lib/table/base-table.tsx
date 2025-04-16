@@ -40,7 +40,7 @@ export function BaseTable<TData, TValue>({
   data,
   actions,
   currentPage,
-  pageSize = PAGE_SIZE,
+  pageSize = Number(PAGE_SIZE || 10),
   showFirstLastButtons = false,
 }: BaseTableProps<TData, TValue>) {
   const table = useReactTable({

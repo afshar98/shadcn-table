@@ -39,11 +39,8 @@ export default function GlobalTable<TData>({
   const searchParams = useSearchParams()
   const pathname = usePathname()
   const router = useRouter()
-
-  if (!data?.data?.rows) return <div className="text-center">{noDataText}</div>
-
   const pageParam = Number(searchParams.get(pageParamName)) || 1
-  const count = PAGE_SIZE || 10
+  const count = Number(PAGE_SIZE || 10)
   const totalRows = Math.ceil(data.data.count / count)
 
   const tableData = useMemo(
@@ -92,6 +89,8 @@ export default function GlobalTable<TData>({
       )
     }
   }
+
+  if (!data?.data?.rows) return <div className="text-center">{noDataText}</div>
 
   return (
     <div className="h-full overflow-y-auto">
